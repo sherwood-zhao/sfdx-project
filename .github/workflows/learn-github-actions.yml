@@ -12,9 +12,9 @@ jobs:
       - name: Install Salesforce CLI
         run: |
           wget https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz
-          mkdir sfdx-cli
-          tar xJf sf-linux-x64.tar.xz -C sfdx-cli --strip-components 1
-          ./sfdx-cli/install
+          mkdir -p ~/cli/sf
+          tar xJf sf-linux-x64.tar.xz -C ~/cli/sf --strip-components 1
+          export PATH=~/cli/sf/bin:$PATH
           sf --version
       - name: 'Populate auth file'
         shell: bash
