@@ -18,4 +18,8 @@ jobs:
           sf --version
       - name: 'Populate auth file'
         shell: bash
-        run: 'echo ${{secrets.SFDC_AUTH_URL}} > AUTH_URL'
+        run: 'echo ${{secrets.SFDC_AUTH_URL}} > authFile'
+      - name: Authenticate against org
+        run: |
+          sf org login sfdx-url -f authFile
+          sf org display
