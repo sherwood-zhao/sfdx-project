@@ -15,6 +15,7 @@ jobs:
           mkdir -p ~/cli/sf
           tar xJf sf-linux-x64.tar.xz -C ~/cli/sf --strip-components 1
           echo ~/cli/sf/bin >> $GITHUB_PATH
+          PATH=~/cli/sf/bin:$PATH
           echo "$PATH" 
           sf --version
           sf plugins --core
@@ -24,5 +25,6 @@ jobs:
         run: 'echo ${{secrets.SFDC_AUTH_URL}} > authFile'
       - name: Authenticate against org
         run: |
+          echo "$PATH" 
           ~/cli/sf/bin/sf org login sfdx-url -f authFile
           sf org display
