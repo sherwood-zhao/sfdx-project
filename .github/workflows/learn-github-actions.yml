@@ -17,10 +17,11 @@ jobs:
           export PATH=~/cli/sf/bin:$PATH
           sf --version
           sf plugins --core
+          where sf
       - name: 'Populate auth file'
         shell: bash
         run: 'echo ${{secrets.SFDC_AUTH_URL}} > authFile'
       - name: Authenticate against org
         run: |
-          ~/cli/sf/sf org login sfdx-url -f authFile
+          ~/cli/sf org login sfdx-url -f authFile
           sf org display
