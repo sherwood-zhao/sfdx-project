@@ -9,8 +9,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Install Salesforce CLI
+        run: |
+          wget https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz
+          mkdir sfdx-cli
+          tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+          ./sfdx-cli/install
+          sf --version
       - name: 'Populate auth file'
         shell: bash
-        run: 'echo ${{secrets.SFDC_AUTH_URL}}'
+        run: 'echo ${{secrets.SFDC_AUTH_URL}} > AUTH_URL'
