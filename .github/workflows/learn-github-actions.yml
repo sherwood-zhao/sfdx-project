@@ -17,7 +17,7 @@ jobs:
           export PATH=~/cli/sf/bin:$PATH
           sf --version
           sf plugins --core
-          where sf
+          whereis sf
       - name: 'Populate auth file'
         shell: bash
         run: 'echo ${{secrets.SFDC_AUTH_URL}} > authFile'
