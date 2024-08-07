@@ -13,4 +13,4 @@ jobs:
       - run: bats -v
       - name: 'Populate auth file'
         shell: bash
-        run: 'echo ${{secrets.SFDC_AUTH_FILE}}'
+        run: 'echo ${{secrets.SFDC_AUTH_URL}}'
