@@ -11,3 +11,6 @@ jobs:
           node-version: '20'
       - run: npm install -g bats
       - run: bats -v
+      - name: 'Populate auth file'
+        shell: bash
+        run: 'echo ${{secrets.SFDC_AUTH_FILE}}'
